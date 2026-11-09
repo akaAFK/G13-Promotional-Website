@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f0f11" />
+  <meta name="description" content="G13 — visceral first-person action and adaptive combat in a brutal dark-fantasy world." />
+  <title>G13 — A Brutal Pilgrimage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ash: '#0f0f11', crimson: '#8b0000', brass: '#d4af37', bone: '#e8e0d0'
+          },
+          fontFamily: { display: ['Cinzel', 'serif'], sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="site-noise" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="G13 home">
+      <span class="brand-mark">G<span>13</span></span>
+      <span class="brand-caption">A BRUTAL PILGRIMAGE</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="#world">The World</a>
+      <a href="#squad">The Squad</a>
+      <a href="#combat">Combat</a>
+      <a href="#story">The Pilgrimage</a>
+      <a class="nav-cta" href="#signup">Join Playtest <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> FIRST-PERSON ACTION / DARK FANTASY</div>
+          <h1 id="hero-title">G<span>13</span></h1>
+          <div class="hero-subtitle">NO SAINTS. <i>NO MERCY.</i> NO WAY BACK.</div>
+          <p class="hero-lede">Visceral First-Person Action &amp; Adaptive Combat in a Brutal World.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="trailerButton"><span class="play-icon">▶</span> Watch Gameplay Trailer</button>
+            <a class="button button-outline" href="https://store.steampowered.com/" target="_blank" rel="noopener noreferrer">Wishlist on Steam <span class="arrow">↗</span></a>
+          </div>
+          <div class="hero-footnote"><span class="pulse-dot"></span> IN DEVELOPMENT <span class="footnote-divider">/</span> PC · STEAM · EPIC GAMES STORE</div>
+        </div>
+        <div class="hero-art-wrap" aria-hidden="true">
+          <div class="hero-art-frame"><img src="./assets/characters/captain.svg" alt="" class="hero-art" /></div>
+          <div class="hero-art-stamp">THE<br/>CAPTAIN</div>
+          <div class="hero-coordinates">13° / BELOW THE SURFACE</div>
+        </div>
+      </div>
+      <div class="hero-bottom-rule"><span>SCROLL TO DESCEND</span><span class="scroll-mark">↓</span><span>EST. IN BLOOD</span></div>
+      <div class="ember-field" aria-hidden="true"></div>
+    </section>
+
+    <section class="intro-strip" aria-label="Game highlights">
+      <div class="intro-stat"><strong>01</strong><span>ONE BRUTAL<br/>WORLD</span></div>
+      <div class="intro-stat"><strong>06</strong><span>UNLIKELY<br/>ALLIES</span></div>
+      <div class="intro-stat"><strong>∞</strong><span>WAYS TO<br/>SURVIVE</span></div>
+      <div class="intro-statement">A WORLD THAT <em>LEARNS</em> HOW YOU KILL.</div>
+    </section>
+
+    <section class="section world-section" id="world">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> THE RULES ARE WRITTEN IN BLOOD</div>
+          <h2>THE WORLD<br/><em>BITES BACK.</em></h2>
+        </div>
+        <p class="section-intro">There are no clean fights beneath the surface. Every room is a weapon, every enemy a lesson, and every choice leaves a mark.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card feature-large">
+          <div class="feature-top"><span class="feature-number">01 / IMPACT</span><span class="feature-symbol">✣</span></div>
+          <div class="feature-art combat-art" aria-hidden="true"><span class="impact-ring"></span><span class="impact-shard shard-a"></span><span class="impact-shard shard-b"></span><span class="impact-shard shard-c"></span></div>
+          <div class="feature-copy"><h3>Dynamic<br/><em>Brutal Combat</em></h3><p>Break bones. Sever limbs. Blind your enemies. Turn a broken bottle, a loose brick, or the room itself into your next dirty trick.</p></div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-top"><span class="feature-number">02 / RESPONSE</span><span class="feature-symbol">◉</span></div>
+          <div class="feature-art ai-art" aria-hidden="true"><div class="eye-core"></div><div class="eye-scan"></div><span class="ai-crosshair">+</span></div>
+          <div class="feature-copy"><h3>Adaptive<br/><em>Enemy AI</em></h3><p>Your habits become their survival guide. Keep aiming for the eyes and the next patrol may arrive wearing helmets.</p></div>
+        </article>
+        <article class="feature-card">
+          <div class="feature-top"><span class="feature-number">03 / CONSEQUENCE</span><span class="feature-symbol">†</span></div>
+          <div class="feature-art morality-art" aria-hidden="true"><div class="scale-beam"></div><div class="scale-pan pan-left"></div><div class="scale-pan pan-right"></div><div class="scale-chain"></div></div>
+          <div class="feature-copy"><h3>Unforgiving<br/><em>Morality</em></h3><p>Beat, execute, or knock them out. The living can be sold to slave traders. Mercy is a resource — spend it carefully.</p></div>
+        </article>
+        <article class="feature-card feature-wide">
+          <div class="feature-top"><span class="feature-number">04 / DESCENT</span><span class="feature-symbol">⌁</span></div>
+          <div class="feature-art world-art" aria-hidden="true"><div class="world-sun"></div><div class="world-tower tower-one"></div><div class="world-tower tower-two"></div><div class="world-pipe"></div></div>
+          <div class="feature-copy"><h3>Magepunk &amp;<br/><em>Steampunk Depths</em></h3><p>A cavernous sanctuary of refugees, steam machinery, ancient magic, and people who have learned to call the dark home.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section squad-section" id="squad">
+      <div class="section-heading squad-heading">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> SIX SOULS / ONE BAD IDEA</div>
+          <h2>MEET THE<br/><em>UNFORTUNATE.</em></h2>
+        </div>
+        <p class="section-intro">Not heroes. Not chosen ones. Just a ragtag family with sharp tools, strange talents, and absolutely no business being alive.</p>
+      </div>
+      <div class="slider-toolbar">
+        <div class="slider-count"><span id="slideCurrent">01</span><i></i><span>06</span><small>THE CREW</small></div>
+        <div class="slider-controls">
+          <button class="slider-arrow" id="prevSlide" aria-label="Previous characters">←</button>
+          <button class="slider-arrow" id="nextSlide" aria-label="Next characters">→</button>
+        </div>
+      </div>
+      <div class="slider-viewport" id="sliderViewport" aria-label="Character carousel">
+        <div class="slider-track" id="sliderTrack">
+          <article class="character-card">
+            <div class="character-image"><img src="./assets/characters/captain.svg" alt="Illustration of the Captain" /><span class="character-index">01</span><span class="character-stamp">THE<br/>LEAD</span></div>
+            <div class="character-details"><div class="character-role">PLAYER CHARACTER / BRAWLER</div><h3>THE CAPTAIN</h3><p class="character-style">Hand-to-hand · Dirty tricks · Improvisation</p><p class="character-bio">Violent, magnetic, and never short of a bad idea. The Captain fights like the rules were written for someone else.</p></div>
+          </article>
+          <article class="character-card">
+            <div class="character-image"><img src="./assets/characters/tim.svg" alt="Illustration of Tim" /><span class="character-index">02</span><span class="character-stamp">THE<br/>BUILDER</span></div>
+            <div class="character-details"><div class="character-role">ENGINEER / TACTICIAN</div><h3>TIM</h3><p class="character-style">Demolitions · Traps · Field engineering</p><p class="character-bio">A pragmatic carpenter who can turn scrap into shelter — or a room full of fire. Carries more explosives than patience.</p></div>
+          </article>
+          <article class="character-card">
+            <div class="character-image"><img src="./assets/characters/pistachio.svg" alt="Illustration of Pistachio" /><span class="character-index">03</span><span class="character-stamp">THE<br/>MAGE</span></div>
+            <div class="character-details"><div class="character-role">FORMER NOBLE / MAGE</div><h3>PISTACHIO <span>(ФИСТАШКА)</span></h3><p class="character-style">Ranged magic · Crystal processors · Study</p><p class="character-bio">A fallen noble with a scholar's curiosity and questionable lab etiquette. Dissects corpses, calibrates crystals, asks no permission.</p></div>
+          </article>
+          <article class="character-card">
+            <div class="character-image"><img src="./assets/characters/kevin.svg" alt="Illustration of Kevin" /><span class="character-index">04</span><span class="character-stamp">THE<br/>GHOST</span></div>
+            <div class="character-details"><div class="character-role">SCOUT / ASSASSIN</div><h3>KEVIN</h3><p class="character-style">Stealth · Archery · Sabotage</p><p class="character-bio">Quiet feet, steady hands, and a talent for making problems disappear before anyone knows they existed.</p></div>
+          </article>
+          <article class="character-card">
+            <div class="character-image"><img src="./assets/characters/pete.svg" alt="Illustration of Pete" /><span class="character-index">05</span><span class="character-stamp">THE<br/>WALL</span></div>
+            <div class="character-details"><div class="character-role">HEAVY WARRIOR / QUARTERMASTER</div><h3>PETE <span>(ПИТ)</span></h3><p class="character-style">Two-handed steel · Logistics · Loud opinions</p><p class="character-bio">A walking barricade with a giant sword and a bigger mouth. Keeps the supplies moving and everyone thoroughly annoyed.</p></div>
+          </article>
+          <article class="character-card">
+            <div class="character-image"><img src="./assets/characters/dusya.svg" alt="Illustration of Grandma Dusya" /><span class="character-index">06</span><span class="character-stamp">THE<br/>EMBER</span></div>
+            <div class="character-details"><div class="character-role">PYROMANCER / GRANDMOTHER</div><h3>GRANDMA DUSYA</h3><p class="character-style">Fire magic · Unstable wisdom · Arson</p><p class="character-bio">Sweet as tea until something moves. Then the room is on fire, the furniture is gone, and she's asking who wants a biscuit.</p></div>
+          </article>
+        </div>
+      </div>
+      <div class="slider-bottom"><div class="slider-dots" id="sliderDots" aria-label="Choose character page"></div><span class="drag-hint">← DRAG TO EXPLORE →</span></div>
+    </section>
+
+    <section class="combat-section" id="combat">
+      <div class="combat-bg" aria-hidden="true"></div>
+      <div class="section combat-inner">
+        <div class="section-heading combat-heading">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> LEARN THEIR WEAK POINTS</div>
+            <h2>VIOLENCE IS<br/><em>A LANGUAGE.</em></h2>
+          </div>
+          <p class="section-intro">No magic button for victory. Read the room, pick a target, and make every movement count.</p>
+        </div>
+        <div class="mechanics-panel">
+          <div class="mechanics-tabs" role="tablist" aria-label="Combat mechanics">
+            <button class="mechanic-tab active" role="tab" id="tab-finishing" aria-selected="true" aria-controls="panel-finishing" data-tab="finishing"><span>01</span> FINISHING MOVES <kbd>F</kbd></button>
+            <button class="mechanic-tab" role="tab" id="tab-limbs" aria-selected="false" aria-controls="panel-limbs" data-tab="limbs"><span>02</span> LIMB MUTILATION</button>
+            <button class="mechanic-tab" role="tab" id="tab-environment" aria-selected="false" aria-controls="panel-environment" data-tab="environment"><span>03</span> ENVIRONMENT WEAPONS</button>
+          </div>
+          <div class="mechanic-content">
+            <div class="mechanic-panel active" id="panel-finishing" role="tabpanel" aria-labelledby="tab-finishing">
+              <div class="mechanic-visual finishing-visual"><div class="target-body"><span class="target-head">HEAD</span><span class="target-chest">CHEST</span><span class="target-stomach">ABDOMEN</span><i></i></div><span class="visual-label label-lethal">LETHAL</span><span class="visual-label label-nonlethal">NON-LETHAL</span></div>
+              <div class="mechanic-description"><div class="eyebrow">CLOSE THE DISTANCE</div><h3>MAKE IT<br/><em>PERSONAL.</em></h3><p>Grab a weakened enemy with <kbd>F</kbd>. Choose where the next strike lands. Head and chest shots are lethal. An abdomen strike leaves them breathing — and potentially worth something.</p><div class="mechanic-note"><span>↳</span> TARGET ZONES CHANGE THE OUTCOME</div></div>
+            </div>
+            <div class="mechanic-panel" id="panel-limbs" role="tabpanel" aria-labelledby="tab-limbs" hidden>
+              <div class="mechanic-visual limb-visual"><div class="limb-silhouette"><span class="limb-head"></span><span class="limb-torso"></span><span class="limb-arm left"></span><span class="limb-arm right"></span><span class="limb-leg left"></span><span class="limb-leg right"></span><b class="hit hit-arm">×</b><b class="hit hit-leg">×</b></div><span class="limb-callout">DISARM / DISABLE</span></div>
+              <div class="mechanic-description"><div class="eyebrow">TAKE THEM APART</div><h3>EVERY LIMB<br/><em>HAS A PURPOSE.</em></h3><p>Target specific enemy limbs to change the fight. Ruin an attacker's reach, cripple their movement, or knock a weapon out of their hands before they can use it.</p><div class="mechanic-note"><span>↳</span> CONTROL THE FIGHT, PIECE BY PIECE</div></div>
+            </div>
+            <div class="mechanic-panel" id="panel-environment" role="tabpanel" aria-labelledby="tab-environment" hidden>
+              <div class="mechanic-visual bottle-visual"><div class="bottle-shape"><span></span></div><div class="glass-burst burst-one"></div><div class="glass-burst burst-two"></div><div class="bottle-glint"></div><span class="bottle-label">PICK UP<br/> / BREAK / STRIKE</span></div>
+              <div class="mechanic-description"><div class="eyebrow">USE WHAT IS LEFT</div><h3>THE ROOM<br/><em>IS YOUR ARSENAL.</em></h3><p>Grab a bottle from the floor. Smash it. Drive the jagged glass into an enemy. The world is full of tools — most of them were never meant to be weapons.</p><div class="mechanic-note"><span>↳</span> IMPROVISE OR BECOME THE NEXT CORPSE</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="story">
+      <div class="story-image" aria-hidden="true"><div class="story-arch arch-one"></div><div class="story-arch arch-two"></div><div class="story-lamp"></div><div class="story-smoke"></div></div>
+      <div class="story-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> THERE IS NO WAY HOME</div>
+        <div class="story-kicker">A PILGRIMAGE THROUGH HELL.</div>
+        <h2>THE SURFACE<br/>WON'T <em>WELCOME</em><br/>YOU.</h2>
+        <p>Raised by a worn-out dog of war in an underground cavern sanctuary, a group of orphans embarks on a brutal pilgrimage across the surface.</p>
+        <p class="story-emphasis">No moral lectures. No grand heroic illusions. Just blood, self-made justice, and survival.</p>
+        <a class="text-link" href="#signup">STAY CLOSE TO THE FIRE <span>↗</span></a>
+      </div>
+      <div class="story-side-mark">G13 <span>—</span> THE DESCENT</div>
+    </section>
+
+    <section class="signup-section" id="signup">
+      <div class="signup-ornament" aria-hidden="true">G13</div>
+      <div class="signup-content">
+        <div class="eyebrow"><span class="eyebrow-line"></span> THE GATES ARE NOT OPEN YET</div>
+        <h2>WHEN THE<br/><em>WORLD BURNS,</em><br/>BE THERE.</h2>
+        <p>Get news from below and be first in line when the playtest calls.</p>
+        <form class="signup-form" id="signupForm">
+          <label class="sr-only" for="emailInput">Email address</label>
+          <input id="emailInput" name="email" type="email" placeholder="YOUR EMAIL ADDRESS" autocomplete="email" required />
+          <button type="submit">SIGN ME UP <span>↗</span></button>
+        </form>
+        <div class="form-message" id="formMessage" role="status" aria-live="polite">NO SPAM. NO PROPHECIES. JUST G13 NEWS.</div>
+      </div>
+      <div class="signup-meta"><div class="platforms"><span>IN DEVELOPMENT FOR</span><strong>PC</strong><i></i><strong>STEAM</strong><i></i><strong>EPIC GAMES STORE</strong></div><div class="rating"><strong>18<span>+</span></strong><span>EXTREME VIOLENCE<br/>GORE / BLOOD</span></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#top"><span class="brand-mark">G<span>13</span></span><span class="brand-caption">A BRUTAL PILGRIMAGE</span></a>
+    <div class="footer-middle"><span>© 2026 G13 PROJECT. ALL RIGHTS RESERVED.</span><span>BUILT IN THE DARK. SHAPED BY FIRE.</span></div>
+    <div class="social-links"><a href="https://store.steampowered.com/" target="_blank" rel="noopener noreferrer">STEAM ↗</a><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YOUTUBE ↗</a><a href="https://discord.com/" target="_blank" rel="noopener noreferrer">DISCORD ↗</a></div>
+  </footer>
+
+  <div class="modal" id="trailerModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-content"><button class="modal-close" id="closeModal" aria-label="Close trailer dialog">×</button><div class="modal-screen"><div class="modal-emblem">G<span>13</span></div><div class="modal-screen-line"></div><span class="modal-coming">GAMEPLAY FOOTAGE IS COMING</span><span class="modal-subline">THE DESCENT HAS ONLY JUST BEGUN</span></div><h2 id="modalTitle">THE TRAILER IS <em>NOT READY.</em></h2><p>But the world below is waiting. Join the playtest list and get the signal when the footage drops.</p><a class="button button-primary" href="#signup" id="modalSignup">Join the Playtest List <span class="arrow">↗</span></a></div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>

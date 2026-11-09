@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+ <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#09090d"/><stop offset=".48" stop-color="#211413"/><stop offset="1" stop-color="#08090b"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#b24b25" stop-opacity=".5"/><stop offset="1" stop-color="#651014" stop-opacity="0"/></radialGradient>
+ <linearGradient id="metal" x2="1"><stop stop-color="#100f12"/><stop offset=".48" stop-color="#493326"/><stop offset=".55" stop-color="#201a19"/><stop offset="1" stop-color="#08090b"/></linearGradient>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#d6b36a"/><stop offset="1" stop-color="#5e321e"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="22"/></filter>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .12"/></feComponentTransfer></filter>
+</defs>
+<rect width="1600" height="1000" fill="url(#bg)"/>
+<ellipse cx="1120" cy="540" rx="540" ry="420" fill="url(#glow)" filter="url(#blur)"/>
+<!-- cave ceiling -->
+<path d="M0 0H1600V180L1510 205 1440 164 1360 218 1284 175 1200 235 1100 174 1020 220 940 155 850 214 760 150 670 215 580 145 505 206 420 138 330 218 250 144 165 205 70 150 0 215Z" fill="#08090c"/>
+<path d="M0 185L170 220 265 155 352 237 460 180 575 240 680 163 790 245 910 170 1025 246 1136 174 1250 240 1350 164 1470 225 1600 170" fill="none" stroke="#493027" stroke-opacity=".38" stroke-width="16"/>
+<!-- distant arches -->
+<g fill="none" stroke="#634332" stroke-opacity=".42">
+ <path d="M80 790V460Q80 220 330 220Q580 220 580 460V790" stroke-width="18"/>
+ <path d="M200 790V470Q200 320 330 320Q460 320 460 470V790" stroke-width="7"/>
+ <path d="M930 800V420Q930 170 1190 170Q1450 170 1450 420V800" stroke-width="20"/>
+ <path d="M1045 800V430Q1045 275 1190 275Q1335 275 1335 430V800" stroke-width="8"/>
+</g>
+<!-- industrial towers -->
+<g fill="url(#metal)" stroke="#76513a" stroke-opacity=".45" stroke-width="3">
+ <path d="M0 630L145 555 230 600V900H0Z"/><path d="M150 610L260 480 350 525V900H150Z"/>
+ <path d="M1195 480L1288 400 1390 450V900H1195Z"/><path d="M1370 550L1480 450 1600 510V930H1370Z"/>
+ <path d="M670 520L740 440 812 520V900H670Z"/><path d="M795 560L860 480 940 560V900H795Z"/>
+</g>
+<!-- pipework -->
+<g fill="none" stroke="url(#gold)" stroke-opacity=".6" stroke-width="9">
+ <path d="M0 420H190Q235 420 235 465V565H395"/><path d="M1600 370H1410Q1370 370 1370 410V520H1280"/>
+ <path d="M560 330V410Q560 455 610 455H735"/><path d="M1030 320V410Q1030 450 990 450H910"/>
+</g>
+<g fill="#a77a43" opacity=".7"><circle cx="235" cy="465" r="12"/><circle cx="1370" cy="410" r="12"/><circle cx="610" cy="455" r="10"/></g>
+<!-- hanging chains -->
+<g stroke="#6f5540" stroke-width="3" opacity=".55"><path d="M720 0V170M735 0V120M1480 0V140M1500 0V200M90 0V150"/></g>
+<!-- foreground bridge -->
+<path d="M0 790L300 715 570 760 820 690 1090 745 1320 690 1600 760V1000H0Z" fill="#08090a"/>
+<path d="M0 790L300 715 570 760 820 690 1090 745 1320 690 1600 760" fill="none" stroke="#8b5b37" stroke-opacity=".55" stroke-width="8"/>
+<g stroke="#79563d" stroke-opacity=".36" stroke-width="5"><path d="M250 730V910M520 755V920M820 690V900M1090 745V930M1320 690V900"/><path d="M0 845L300 790 570 830 820 765 1090 820 1320 770 1600 835"/></g>
+<!-- furnace light + embers -->
+<ellipse cx="850" cy="760" rx="360" ry="110" fill="#982c16" opacity=".2" filter="url(#blur)"/>
+<g fill="#e68a45"><circle cx="160" cy="520" r="3"/><circle cx="410" cy="380" r="2"/><circle cx="680" cy="610" r="3"/><circle cx="930" cy="255" r="2"/><circle cx="1160" cy="620" r="3"/><circle cx="1450" cy="330" r="2"/><circle cx="1270" cy="710" r="2"/><circle cx="540" cy="720" r="2"/></g>
+<rect width="1600" height="1000" filter="url(#grain)" opacity=".45"/>
+</svg>

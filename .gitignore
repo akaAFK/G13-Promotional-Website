@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+__pycache__/
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.local
+
+# Python compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# Build outputs & caches
+dist/
+build/
+.next/
+.turbo/
+.vite/
+
+# Database files
+*.sqlite3
+*.db
+
+# ML models and large artifacts
+ml/models/*
+!ml/models/.gitkeep
+*.onnx
+*.safetensors
+*.pt
+*.bin
+
+# OS files
+.DS_Store
+Thumbs.db

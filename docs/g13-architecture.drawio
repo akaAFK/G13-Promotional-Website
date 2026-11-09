@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="g13-arch" name="4.2 Схема компонентов">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="G13 Promo Website — 4.2. Схема компонентов" style="text;html=1;fontSize=20;fontStyle=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="20" y="-20" width="620" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Client chain -->
+        <mxCell id="user" value="Пользователь&lt;br&gt;(браузер / мобильный)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="20" y="210" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="cdn" value="CDN&lt;br&gt;(Vercel Edge)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="200" y="210" width="140" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="front" value="&lt;b&gt;Frontend: React / Vite SPA&lt;/b&gt;&lt;br&gt;статика, медиа, анимации" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="380" y="210" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Backend -->
+        <mxCell id="back" value="&lt;b&gt;API Gateway / Backend: FastAPI&lt;/b&gt;&lt;br&gt;auth, валидация,&lt;br&gt;rate limit, CORS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;verticalAlign=top;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="40" width="200" height="430" as="geometry"/>
+        </mxCell>
+
+        <!-- Services -->
+        <mxCell id="redis" value="&lt;b&gt;Redis&lt;/b&gt;&lt;br&gt;кэш ответов LLM, рекомендаций, лимиты" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="900" y="40" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="pg" value="&lt;b&gt;PostgreSQL&lt;/b&gt;&lt;br&gt;подписчики, заказы, события,&lt;br&gt;логи чата (pgvector: лор)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="900" y="130" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="llm" value="&lt;b&gt;LLM Service&lt;/b&gt;&lt;br&gt;LangChain, потоковые ответы" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="900" y="220" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="ml" value="&lt;b&gt;ML Service&lt;/b&gt;&lt;br&gt;модель рекомендаций из ml/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="900" y="310" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="pay" value="&lt;b&gt;Payment Gateway&lt;/b&gt;&lt;br&gt;Stripe / Kaspi Pay" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="900" y="400" width="220" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- External -->
+        <mxCell id="ext" value="OpenAI / Gemini" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#ffffff;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="235" width="140" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges: client chain -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="user" target="cdn"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="cdn" target="front"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="HTTPS / JSON / SSE" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;startArrow=block;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="front" target="back"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Edges: backend to services -->
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;startArrow=block;" edge="1" parent="1" source="back" target="redis"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;startArrow=block;" edge="1" parent="1" source="back" target="pg"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;startArrow=block;" edge="1" parent="1" source="back" target="llm"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;startArrow=block;" edge="1" parent="1" source="back" target="ml"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="back" target="pay"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;startArrow=block;" edge="1" parent="1" source="llm" target="ext"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Webhook -->
+        <mxCell id="wh" value="webhook" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;dashed=1;strokeColor=#82b366;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="pay" target="back">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="1010" y="510"/><mxPoint x="700" y="510"/></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Order flow -->
+        <mxCell id="fl" value="Поток данных на примере предзаказа" style="text;html=1;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="20" y="560" width="500" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="f1" value="1. Браузер" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="20" y="610" width="120" height="60" as="geometry"/></mxCell>
+        <mxCell id="f2" value="2. Frontend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="160" y="610" width="120" height="60" as="geometry"/></mxCell>
+        <mxCell id="f3" value="3. POST /orders" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;dashed=1;" vertex="1" parent="1"><mxGeometry x="300" y="610" width="120" height="60" as="geometry"/></mxCell>
+        <mxCell id="f4" value="4. Backend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="440" y="610" width="120" height="60" as="geometry"/></mxCell>
+        <mxCell id="f5" value="5. PostgreSQL:&lt;br&gt;заказ pending" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="580" y="610" width="120" height="60" as="geometry"/></mxCell>
+        <mxCell id="f6" value="6. Платёжный шлюз&lt;br&gt;(страница оплаты)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="720" y="610" width="120" height="60" as="geometry"/></mxCell>
+        <mxCell id="f7" value="7. webhook" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;dashed=1;" vertex="1" parent="1"><mxGeometry x="860" y="610" width="120" height="60" as="geometry"/></mxCell>
+        <mxCell id="f8" value="8. Backend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="1000" y="610" width="120" height="60" as="geometry"/></mxCell>
+        <mxCell id="f9" value="9. PostgreSQL:&lt;br&gt;заказ paid" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="1140" y="610" width="120" height="60" as="geometry"/></mxCell>
+        <mxCell id="f10" value="10. Письмо&lt;br&gt;пользователю" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="1280" y="610" width="120" height="60" as="geometry"/></mxCell>
+
+        <mxCell id="g1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="f1" target="f2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="g2" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="f2" target="f3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="g3" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="f3" target="f4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="g4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="f4" target="f5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="g5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="f5" target="f6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="g6" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="f6" target="f7"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="g7" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="f7" target="f8"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="g8" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="f8" target="f9"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="g9" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" edge="1" parent="1" source="f9" target="f10"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
