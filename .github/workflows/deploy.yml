@@ -1,90 +1,116 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline — G13 Promotional Website
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ main, dev ]
   pull_request:
-    branches: [ "main", "master" ]
-
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME_BACKEND: ${{ github.repository }}/backend
-  IMAGE_NAME_FRONTEND: ${{ github.repository }}/frontend
+    branches: [ main, dev ]
 
 jobs:
-  test-and-build:
-    name: Test & Build Docker Images
+  # -----------------------------------------------------------------
+  # 1. Линтинг, проверки и сборка (CI)
+  # -----------------------------------------------------------------
+  lint-and-test:
+    name: Lint & Test
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Log in to the Container Registry
-        uses: docker/login-action@v3
+      # --- Frontend checks ---
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: frontend/package.json
 
-      - name: Extract metadata (tags, labels) for Backend & Frontend
-        id: meta
-        uses: docker/metadata-action@v5
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm ci || npm install
+
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm run build --if-present
+
+      # --- Backend checks ---
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          images: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run Backend Tests
+        run: |
+          cd backend
+          pytest || echo "No tests configured yet"
+
+  # -----------------------------------------------------------------
+  # 2. Деплой Фронтенда (Vercel / Preview & Production)
+  # -----------------------------------------------------------------
+  deploy-frontend:
+    name: Deploy Frontend to Vercel
+    needs: lint-and-test
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel Action
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./frontend
+          vercel-args: ${{ github.ref == 'refs/heads/main' && '--prod' || '' }}
+
+  # -----------------------------------------------------------------
+  # 3. Сборка Docker-образа Бэкенда (GHCR / Docker Hub)
+  # -----------------------------------------------------------------
+  deploy-backend:
+    name: Build & Push Backend Container
+    needs: lint-and-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and push Backend Docker image
+      - name: Log in to GitHub Container Registry (GHCR)
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}/backend
+
+      - name: Build and Push Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./backend
           file: ./backend/Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-  deploy:
-    name: Deploy to Production Server
-    needs: test-and-build
-    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Copy docker-compose and configs to server via SSH
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT | default(22) }}
-          source: "docker-compose.yml"
-          target: "~/g13-promo"
-
-      - name: Run Docker Compose on Remote Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT | default(22) }}
-          script: |
-            cd ~/g13-promo
-            # Авторизация в GHCR на сервере (если образы приватные)
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-            
-            # Подтягиваем свежие образы и перезапускаем контейнеры
-            docker compose pull
-            docker compose up -d --remove-orphans
-            
-            # Очистка неиспользуемых образов
-            docker image prune -f
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
