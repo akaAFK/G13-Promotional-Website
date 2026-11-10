@@ -18,7 +18,7 @@
 | :--- | :--- | :--- | :--- |
 | **Serikbaev Rakhat** | **Team Lead / Frontend Developer** | Планирование и координация, UI/UX дизайн-система, React-клиент, интерактивные блоки (слайдеры, табы механик, галерея), интеграция с API. | [Telegram: @akaAFK](https://t.me/akaAFK) |
 | **Shilleref Ilya** | **Backend Developer** | REST API (FastAPI), проектирование и миграции PostgreSQL, Redis-кэширование, интеграция Stripe/Kaspi Pay, LLM AI-консультант (LangChain), ML-сервис. | [GitHub](https://github.com/shilleroff) |
-| **Nusipbaev Ibrohimali** | **DevOps / QA Engineer** | Репозиторий и CI/CD (GitHub Actions), контейнеризация Docker Compose, деплойment (Vercel/Cloud), автотесты (Pytest/Vitest), мониторинг. | GitHub |
+| **Nusipbaev Ibrohimali** | **DevOps / QA Engineer** | Репозиторий и CI/CD (GitHub Actions), контейнеризация Docker Compose, деплойment (Vercel/Cloud), автотесты (Pytest/Vitest), мониторинг. | [GitHub](https://github.com/AAA-sip) |
 
 ---
 
