@@ -1,14 +1,21 @@
 # G13 — Promotional Website & Interactive AI Platform
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=githubpages&logoColor=white)](https://akaafk.github.io/G13-Promotional-Website/frontend/)
+[![Figma Design](https://img.shields.io/badge/Design-Figma_UI%2FUX-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/ptgghfLUbZm8ZsgYsmzAtC/G13-Promotional-Website?node-id=0-1&m=dev&t=C7gUzuPJBeQlBv8y-1)
+[![Telegram Team Lead](https://img.shields.io/badge/Telegram-@akaAFK-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/akaAFK)
+[![Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/akaAFK/G13-Promotional-Website)
+
 > **G13** — 3D экшен от первого лица в жанре тёмного фэнтези и стимпанка (*No Saints. No Mercy. No Way Back.*).  
 > Данный репозиторий представляет собой высоконагруженный промо-сайт с интерактивными элементами (3D/слайдеры), встроенным **AI-консультантом** по лору игры и **ML-системой персональных рекомендаций**.
 
 ---
 
 ## 📋 Оглавление
-1. [Команда и роли](#-команда-и-роли)
-2. [Идея и концепция](#-идея-и-концепция)
-3. [Ключевой стек технологий](#-ключевой-стек-технологий)
+
+1. [👥 Команда и роли](#-команда-и-роли)
+2. [💡 Идея и концепция](#-идея-и-концепция)
+3. [🛠 Ключевой стек технологий](#-ключевой-стек-технологий)
+4. [🚀 Запуск MVP](#-запуск-mvp-университетская-демо-версия)
 
 ---
 
@@ -16,9 +23,9 @@
 
 | Участник | Роль | Зона ответственности | Контакты |
 | :--- | :--- | :--- | :--- |
-| **Serikbaev Rakhat** | **Team Lead / Frontend Developer** | Планирование и координация, UI/UX дизайн-система, React-клиент, интерактивные блоки (слайдеры, табы механик, галерея), интеграция с API. | [Telegram: @akaAFK](https://t.me/akaAFK) |
-| **Shilleref Ilya** | **Backend Developer** | REST API (FastAPI), проектирование и миграции PostgreSQL, Redis-кэширование, интеграция Stripe/Kaspi Pay, LLM AI-консультант (LangChain), ML-сервис. | [GitHub](https://github.com/shilleroff) |
-| **Nusipbaev Ibrohimali** | **DevOps / QA Engineer** | Репозиторий и CI/CD (GitHub Actions), контейнеризация Docker Compose, деплойment (Vercel/Cloud), автотесты (Pytest/Vitest), мониторинг. | [GitHub](https://github.com/AAA-sip) |
+| **Serikbaev Rakhat** | **Team Lead / Frontend Developer** | Планирование и координация, UI/UX дизайн-система, React-клиент, интерактивные блоки (слайдеры, табы механик, галерея), интеграция с API. | [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/akaAFK)<br>[![@akaAFK](https://img.shields.io/badge/@akaAFK-1f2328?style=for-the-badge&logoColor=white)](https://t.me/akaAFK) |
+| **Shilleref Ilya** | **Backend Developer** | REST API (FastAPI), проектирование и миграции PostgreSQL, Redis-кэширование, интеграция Stripe/Kaspi Pay, LLM AI-консультант (LangChain), ML-сервис. | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shilleroff)<br>[![shilleroff](https://img.shields.io/badge/shilleroff-1f2328?style=for-the-badge&logoColor=white)](https://github.com/shilleroff) |
+| **Nusipbaev Ibrohimali** | **DevOps / QA Engineer** | Репозиторий и CI/CD (GitHub Actions), контейнеризация Docker Compose, деплойment (Vercel/Cloud), автотесты (Pytest/Vitest), мониторинг. | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AAA-sip)<br>[![AAA-sip](https://img.shields.io/badge/AAA--sip-1f2328?style=for-the-badge&logoColor=white)](https://github.com/AAA-sip) |
 
 ---
 
