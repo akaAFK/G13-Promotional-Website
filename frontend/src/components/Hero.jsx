@@ -18,7 +18,7 @@ export default function Hero() {
         </div>
         <div className="hero-art-wrap">
           <div className="hero-art-frame">
-            <img src="/assets/characters/captain.svg" alt="The Captain — G13 protagonist" />
+            <img src={import.meta.env.BASE_URL + "assets/characters/captain.svg"} alt="The Captain — G13 protagonist" />
           </div>
           <div className="hero-art-stamp">THE<br/>CAPTAIN</div>
           <div className="hero-coordinates">13° / BELOW THE SURFACE</div>

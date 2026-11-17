@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-label="GRANDMA DUSYA portrait">
+<defs>
+ <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#101114"/><stop offset=".55" stop-color="#2b1b18"/><stop offset="1" stop-color="#09090b"/></linearGradient>
+ <radialGradient id="halo"><stop stop-color="#be4b20" stop-opacity=".66"/><stop offset="1" stop-color="#be4b20" stop-opacity="0"/></radialGradient>
+ <linearGradient id="coat" x2=".9" y2="1"><stop stop-color="#594239"/><stop offset=".42" stop-color="#20191a"/><stop offset="1" stop-color="#090a0c"/></linearGradient>
+ <linearGradient id="light" x2="1"><stop stop-color="#b24b2d" stop-opacity=".06"/><stop offset=".5" stop-color="#b24b2d" stop-opacity=".55"/><stop offset="1" stop-color="#b24b2d" stop-opacity=".03"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="22"/></filter>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .16"/></feComponentTransfer></filter>
+</defs>
+<rect width="600" height="760" fill="url(#bg)"/>
+<ellipse cx="320" cy="330" rx="290" ry="300" fill="url(#halo)" filter="url(#blur)"/>
+<!-- gothic ironwork -->
+<path d="M35 760V300Q35 54 300 54Q565 54 565 300V760" fill="none" stroke="#94734e" stroke-opacity=".26" stroke-width="3"/>
+<path d="M77 760V330Q77 100 300 100Q523 100 523 330V760" fill="none" stroke="#b24b2d" stroke-opacity=".2" stroke-width="1.5"/>
+<path d="M0 590L120 538 180 555 250 514 340 550 415 510 500 554 600 520V760H0Z" fill="#0b0c0e" opacity=".62"/>
+<g stroke="#a47b4a" stroke-opacity=".18" stroke-width="5" fill="none"><path d="M0 245H95V340M600 230H505V340M60 0V150M540 0V150"/><path d="M0 720L115 665 195 688 300 640 405 688 490 660 600 716"/></g>
+<circle cx="300" cy="315" r="210" fill="none" stroke="#d4af37" stroke-opacity=".13" stroke-dasharray="3 15" stroke-width="2"/>
+<!-- character shadow and body -->
+<ellipse cx="315" cy="740" rx="250" ry="42" fill="#000" opacity=".6" filter="url(#blur)"/>
+<path d="M160 468Q209 389 274 359L319 342 372 363Q444 398 476 484L520 750H72Z" fill="url(#coat)" stroke="#a65b38" stroke-width="4"/><path d="M247 370L319 440 390 370 422 750H212Z" fill="#3b2420"/><path d="M180 470L104 558 164 644 252 557Z" fill="#62372c"/><path d="M451 469L511 551 466 643 384 559Z" fill="#402621"/><path d="M269 390Q319 424 369 390" stroke="#d1b397" stroke-width="10" fill="none"/>
+<path d="M231 278Q219 193 318 174Q416 191 400 293L373 327 261 317Z" fill="#33201b"/><path d="M241 218Q267 148 324 154Q385 155 403 221L375 200 345 185 315 211 280 190 258 228Z" fill="#afa099"/><circle cx="260" cy="193" r="24" fill="#d0b5a0"/><circle cx="389" cy="195" r="23" fill="#d0b5a0"/>
+<path d="M260 223Q318 188 375 231L371 294Q356 352 318 360Q279 350 262 297Z" fill="#b58d72"/><path d="M264 268Q286 250 304 264M338 264Q359 250 375 268" stroke="#514039" stroke-width="7" fill="none"/><circle cx="290" cy="281" r="5" fill="#211919"/><circle cx="351" cy="281" r="5" fill="#211919"/><path d="M284 326Q319 349 354 326" stroke="#713a2b" stroke-width="6" fill="none"/>
+<path d="M110 456Q65 405 87 359Q115 370 128 405Q135 365 166 340Q180 390 150 427Z" fill="#d25b27"/><path d="M456 462Q427 400 468 355Q488 388 480 420Q514 389 540 393Q531 440 491 465Z" fill="#f0a13e"/><path d="M135 496L86 590M468 501L528 581" stroke="#e08b43" stroke-width="9" fill="none"/>
+<path d="M501 400L536 375 566 432 531 453Z" fill="#d4af37"/><path d="M531 450Q590 478 559 534Q544 556 514 553Q538 522 505 505Q485 487 531 450Z" fill="#e65c27"/><path d="M531 468Q557 492 541 524" stroke="#ffd47b" stroke-width="7" fill="none"/>
+<!-- edge lighting / details -->
+<path d="M110 690Q173 580 202 490M490 680Q445 575 420 480" stroke="url(#light)" stroke-width="8" fill="none"/>
+<path d="M40 650H150M450 650H560" stroke="#b24b2d" stroke-opacity=".45" stroke-width="2"/>
+<g fill="#d59a57" opacity=".8"><circle cx="118" cy="266" r="2"/><circle cx="468" cy="303" r="2"/><circle cx="510" cy="475" r="3"/><circle cx="86" cy="520" r="2"/><circle cx="405" cy="135" r="2"/></g>
+<rect width="600" height="760" filter="url(#grain)" opacity=".4"/>
+<rect x="14" y="14" width="572" height="732" fill="none" stroke="#d4af37" stroke-opacity=".16" stroke-width="1"/>
+</svg>
