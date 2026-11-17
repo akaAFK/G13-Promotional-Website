@@ -55,5 +55,46 @@
 
 ---
 
+## 🚀 Запуск MVP (университетская демо-версия)
+
+```bash
+docker compose up -d --build
+```
+
+- Сайт: **http://localhost:8080**
+- API docs (Swagger): **http://localhost:8000/docs**
+- Healthcheck: **http://localhost:8080/api/health**
+
+Стек демо: `nginx` (статика + прокси `/api`) → `FastAPI` → `PostgreSQL 16`. Redis не используется.
+Схема БД создаётся автоматически при старте (`Base.metadata.create_all`).
+
+### Переменные окружения
+
+Скопируйте `.env.example` в `.env` (файл уже в `.gitignore`):
+
+| Переменная | Назначение |
+| :--- | :--- |
+| `OPENROUTER` или `OPENROUTER_API_KEY` | ключ OpenRouter для AI-консультанта |
+| `OPENROUTER_MODEL` | модель по умолчанию — `openrouter/free` (автовыбор бесплатной модели) |
+| `MAIL_DEV_MODE` | `true` — письма пишутся в логи бэкенда; `false` — реальная отправка через Gmail |
+| `GMAIL_USER`, `GMAIL_APP_PASSWORD` | почта и пароль приложения Gmail (нужны только при `MAIL_DEV_MODE=false`) |
+
+### Что работает
+
+1. **Подписка на плейтест** — `POST /api/subscribe`: email сохраняется в PostgreSQL, приветственное письмо уходит через `fastapi-mail` (в демо — в логи контейнера).
+2. **Демо-оплата** — `POST /api/checkout` создаёт заказ `pending`, локальная страница `checkout.html` имитирует Stripe Checkout. Тестовая карта `4242 4242 4242 4242` → `POST /api/payments/confirm` (или `/api/payments/webhook/mock`) переводит заказ в `paid` и отправляет чек. Реальные запросы в Stripe не делаются.
+3. **AI-консультант по лору** — `POST /api/chat`: стриминг ответа от OpenRouter через OpenAI SDK (SSE-подобный поток). При отсутствии ключа или ошибке провайдера используется локальный ответ по лору.
+4. **ML-рекомендации** — `POST /api/recommend`: TF-IDF + косинусная близость (`scikit-learn`) по описаниям шести персонажей и ответам мини-квиза на сайте.
+5. **Логи чата** — сообщения сохраняются в таблице `chat_messages`.
+
+### Полезные команды
+
+```bash
+docker compose logs -f backend          # письма и отладка
+docker compose exec postgres psql -U g13 -d g13 -c "select * from orders;"
+docker compose down                     # остановить (данные сохраняются в volume pgdata)
+docker compose down -v                  # остановить и удалить данные БД
+```
+
 
 

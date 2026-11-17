@@ -159,20 +159,4 @@
   });
   document.getElementById('modalSignup').addEventListener('click', hideModal);
 
-  // Front-end demo form: validates input and confirms locally; connect to a backend/CRM for real signups.
-  const form = document.getElementById('signupForm');
-  const emailInput = document.getElementById('emailInput');
-  const message = document.getElementById('formMessage');
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!emailInput.checkValidity()) {
-      message.textContent = 'ENTER A VALID EMAIL ADDRESS TO JOIN THE LIST.';
-      message.className = 'form-message error';
-      emailInput.focus();
-      return;
-    }
-    message.textContent = 'YOU ARE ON THE LIST. WATCH THE DARK FOR A SIGNAL.';
-    message.className = 'form-message success';
-    form.reset();
-  });
 })();
