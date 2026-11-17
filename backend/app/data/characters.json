@@ -1,0 +1,50 @@
+[
+  {
+    "id": "captain",
+    "name": "THE CAPTAIN",
+    "role": "PLAYER CHARACTER / BRAWLER",
+    "style": "Hand-to-hand · Dirty tricks · Improvisation",
+    "bio": "Violent, magnetic, and never short of a bad idea. The Captain fights like the rules were written for someone else.",
+    "tags": ["brawler", "fists", "brutal", "improvisation", "close combat", "aggressive", "leader", "FINISHING MOVES"]
+  },
+  {
+    "id": "tim",
+    "name": "TIM",
+    "role": "ENGINEER / TACTICIAN",
+    "style": "Demolitions · Traps · Field engineering",
+    "bio": "A pragmatic carpenter who can turn scrap into shelter — or a room full of fire. Carries more explosives than patience.",
+    "tags": ["engineer", "traps", "demolition", "explosives", "tactics", "environment weapons", "STRATEGY", "scrap"]
+  },
+  {
+    "id": "pistachio",
+    "name": "PISTACHIO",
+    "role": "FORMER NOBLE / MAGE",
+    "style": "Ranged magic · Crystal processors · Study",
+    "bio": "A fallen noble with a scholar's curiosity and questionable lab etiquette. Dissects corpses, calibrates crystals, asks no permission.",
+    "tags": ["mage", "magic", "crystals", "ranged", "scholar", "science", "study", "experiments"]
+  },
+  {
+    "id": "kevin",
+    "name": "KEVIN",
+    "role": "SCOUT / ASSASSIN",
+    "style": "Stealth · Archery · Sabotage",
+    "bio": "Quiet feet, steady hands, and a talent for making problems disappear before anyone knows they existed.",
+    "tags": ["stealth", "scout", "assassin", "archery", "sabotage", "silent", "LIMB MUTILATION", "quiet"]
+  },
+  {
+    "id": "pete",
+    "name": "PETE",
+    "role": "HEAVY WARRIOR / QUARTERMASTER",
+    "style": "Two-handed steel · Logistics · Loud opinions",
+    "bio": "A walking barricade with a giant sword and a bigger mouth. Keeps the supplies moving and everyone thoroughly annoyed.",
+    "tags": ["heavy", "warrior", "sword", "tank", "logistics", "defense", "loud", "two-handed"]
+  },
+  {
+    "id": "dusya",
+    "name": "GRANDMA DUSYA",
+    "role": "PYROMANCER / GRANDMOTHER",
+    "style": "Fire magic · Unstable wisdom · Arson",
+    "bio": "Sweet as tea until something moves. Then the room is on fire, the furniture is gone, and she's asking who wants a biscuit.",
+    "tags": ["fire", "pyromancer", "burn", "arson", "chaos", "grandmother", "unstable", "magic"]
+  }
+]

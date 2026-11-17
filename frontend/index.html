@@ -150,6 +150,42 @@
         </div>
       </div>
       <div class="slider-bottom"><div class="slider-dots" id="sliderDots" aria-label="Choose character page"></div><span class="drag-hint">← DRAG TO EXPLORE →</span></div>
+
+      <div class="squad-recommender" id="squadRecommender">
+        <div class="reco-head">
+          <div class="eyebrow"><span class="eyebrow-line"></span> ML / SQUAD ANALYSIS</div>
+          <h3>WHO WOULD YOU <em>RECRUIT?</em></h3>
+          <p>Three questions. A content-based model compares your answers with the crew's combat styles.</p>
+        </div>
+        <div class="reco-quiz" id="recoQuiz">
+          <div class="reco-question" data-question="0">
+            <span>01 / HOW DO YOU FIGHT?</span>
+            <div class="reco-options">
+              <button type="button" data-keywords="brawler fists brutal close combat aggressive">UP CLOSE</button>
+              <button type="button" data-keywords="stealth archery sabotage quiet assassin">FROM THE SHADOWS</button>
+              <button type="button" data-keywords="mage magic crystals ranged study">WITH MAGIC</button>
+            </div>
+          </div>
+          <div class="reco-question" data-question="1">
+            <span>02 / WHAT DO YOU TRUST?</span>
+            <div class="reco-options">
+              <button type="button" data-keywords="engineer traps demolition explosives tactics">TRAPS &amp; SCRAP</button>
+              <button type="button" data-keywords="heavy warrior sword defense tank steel">STEEL &amp; MUSCLE</button>
+              <button type="button" data-keywords="fire pyromancer burn arson chaos">FIRE</button>
+            </div>
+          </div>
+          <div class="reco-question" data-question="2">
+            <span>03 / YOUR TEMPERAMENT?</span>
+            <div class="reco-options">
+              <button type="button" data-keywords="leader improvisation loud aggressive impulsive">LOUD &amp; BOLD</button>
+              <button type="button" data-keywords="quiet scholar study experiments calm">CALCULATING</button>
+              <button type="button" data-keywords="chaos unstable grandmother fire unpredictable">UNPREDICTABLE</button>
+            </div>
+          </div>
+          <button class="reco-submit" id="recoSubmit" type="button">RUN SQUAD ANALYSIS <span>↗</span></button>
+        </div>
+        <div class="reco-results" id="recoResults" aria-live="polite"></div>
+      </div>
     </section>
 
     <section class="combat-section" id="combat">
@@ -211,6 +247,23 @@
           <button type="submit">SIGN ME UP <span>↗</span></button>
         </form>
         <div class="form-message" id="formMessage" role="status" aria-live="polite">NO SPAM. NO PROPHECIES. JUST G13 NEWS.</div>
+
+        <div class="preorder-box">
+          <div class="eyebrow"><span class="eyebrow-line"></span> DEMO PRE-ORDER / STRIPE TEST FLOW</div>
+          <h3>SECURE YOUR <em>COPY.</em></h3>
+          <form class="preorder-form" id="preorderForm">
+            <label class="sr-only" for="preorderEmail">Email address</label>
+            <input id="preorderEmail" name="email" type="email" placeholder="YOUR EMAIL ADDRESS" autocomplete="email" required />
+            <label class="sr-only" for="preorderEdition">Edition</label>
+            <select id="preorderEdition" name="edition">
+              <option value="STANDARD">STANDARD — $19.99</option>
+              <option value="DELUXE">DELUXE — $39.99</option>
+              <option value="COLLECTOR">COLLECTOR — $99.99</option>
+            </select>
+            <button type="submit">PRE-ORDER <span>↗</span></button>
+          </form>
+          <div class="form-message" id="preorderMessage" role="status">MOCK PAYMENT ONLY — TEST CARD 4242 4242 4242 4242. NO REAL CHARGE.</div>
+        </div>
       </div>
       <div class="signup-meta"><div class="platforms"><span>IN DEVELOPMENT FOR</span><strong>PC</strong><i></i><strong>STEAM</strong><i></i><strong>EPIC GAMES STORE</strong></div><div class="rating"><strong>18<span>+</span></strong><span>EXTREME VIOLENCE<br/>GORE / BLOOD</span></div></div>
     </section>
@@ -226,6 +279,29 @@
     <div class="modal-backdrop" data-close-modal></div>
     <div class="modal-content"><button class="modal-close" id="closeModal" aria-label="Close trailer dialog">×</button><div class="modal-screen"><div class="modal-emblem">G<span>13</span></div><div class="modal-screen-line"></div><span class="modal-coming">GAMEPLAY FOOTAGE IS COMING</span><span class="modal-subline">THE DESCENT HAS ONLY JUST BEGUN</span></div><h2 id="modalTitle">THE TRAILER IS <em>NOT READY.</em></h2><p>But the world below is waiting. Join the playtest list and get the signal when the footage drops.</p><a class="button button-primary" href="#signup" id="modalSignup">Join the Playtest List <span class="arrow">↗</span></a></div>
   </div>
+  <div class="lore-widget" id="loreWidget">
+    <button class="lore-toggle" id="loreToggle" type="button" aria-expanded="false" aria-controls="lorePanel">
+      <span class="lore-toggle-icon">✣</span>
+      <span class="lore-toggle-text">ASK THE LORE <small>AI CONSULTANT</small></span>
+    </button>
+    <div class="lore-panel" id="lorePanel" aria-hidden="true">
+      <div class="lore-header">
+        <div><span class="lore-status"></span> LORE CONSULTANT <small id="loreModel">OPENROUTER / FREE MODEL</small></div>
+        <button id="loreClose" type="button" aria-label="Close lore chat">×</button>
+      </div>
+      <div class="lore-messages" id="loreMessages" aria-live="polite">
+        <div class="lore-bubble bot">Six souls, one bad idea. Ask me about the crew, the combat or the world below.</div>
+      </div>
+      <form class="lore-input" id="loreForm">
+        <label class="sr-only" for="loreInput">Message</label>
+        <input id="loreInput" placeholder="ASK ABOUT G13..." autocomplete="off" maxlength="500" />
+        <button type="submit" aria-label="Send">↗</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="./api.js"></script>
   <script src="./script.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
