@@ -159,4 +159,144 @@
   });
   document.getElementById('modalSignup').addEventListener('click', hideModal);
 
+  // --- G13 atmospheric embers: lightweight Canvas 2D (no WebGL / dependencies) ---
+  const particleCanvas = document.getElementById('g13Particles');
+  const heroSection = document.querySelector('.hero-section');
+  const heroArtFrame = document.querySelector('.hero-art-frame');
+
+  if (particleCanvas && heroSection) {
+    const ctx = particleCanvas.getContext('2d', { alpha: true });
+    if (ctx) {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const particles = [];
+      const pointer = { x: 0.5, y: 0.45, targetX: 0.5, targetY: 0.45 };
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+      let frameId = 0;
+      let lastFrame = 0;
+      let inView = true;
+      const mobile = window.matchMedia('(max-width: 760px)').matches;
+      const particleCount = reducedMotion ? 22 : (mobile ? 34 : 76);
+      const rand = (min, max) => min + Math.random() * (max - min);
+
+      function createParticle(initial = false) {
+        return {
+          x: rand(0, width || window.innerWidth),
+          y: initial ? rand(0, height || window.innerHeight) : (height || window.innerHeight) + rand(4, 60),
+          radius: rand(0.55, 1.8),
+          speed: rand(0.12, 0.48),
+          drift: rand(-0.22, 0.22),
+          phase: rand(0, Math.PI * 2),
+          alpha: rand(0.25, 0.82),
+          gold: Math.random() > 0.68,
+          spark: Math.random() > 0.86
+        };
+      }
+
+      function resizeCanvas() {
+        const rect = heroSection.getBoundingClientRect();
+        width = Math.max(1, rect.width);
+        height = Math.max(1, rect.height);
+        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        particleCanvas.width = Math.round(width * dpr);
+        particleCanvas.height = Math.round(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        if (!particles.length) {
+          for (let i = 0; i < particleCount; i += 1) particles.push(createParticle(true));
+        }
+        drawFrame(0, true);
+      }
+
+      function drawFrame(time, staticFrame = false) {
+        ctx.clearRect(0, 0, width, height);
+        const parallaxX = (pointer.x - 0.5) * 8;
+        const parallaxY = (pointer.y - 0.5) * 6;
+
+        for (const p of particles) {
+          if (!staticFrame && !reducedMotion) {
+            p.y -= p.speed;
+            p.x += p.drift + Math.sin(time * 0.0007 + p.phase) * 0.12;
+            if (p.y < -8 || p.x < -12 || p.x > width + 12) Object.assign(p, createParticle());
+          }
+          const twinkle = reducedMotion ? 1 : (0.72 + Math.sin(time * 0.002 + p.phase) * 0.22);
+          const alpha = p.alpha * twinkle;
+          const color = p.gold ? '212,175,55' : '235,91,43';
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(${color},${alpha})`;
+          ctx.shadowBlur = p.spark ? 13 : 7;
+          ctx.shadowColor = p.gold ? 'rgba(212,175,55,.5)' : 'rgba(220,55,25,.55)';
+          ctx.arc(p.x + parallaxX * 0.12, p.y + parallaxY * 0.12, p.radius, 0, Math.PI * 2);
+          ctx.fill();
+
+          if (p.spark && !reducedMotion) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(235,115,48,${alpha * 0.48})`;
+            ctx.lineWidth = 0.7;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.x - p.drift * 7, p.y + 5 + p.speed * 8);
+            ctx.stroke();
+          }
+        }
+        ctx.shadowBlur = 0;
+      }
+
+      function animate(time) {
+        if (!inView || document.hidden) {
+          frameId = 0;
+          return;
+        }
+        if (time - lastFrame >= 1000 / 60) {
+          lastFrame = time;
+          pointer.x += (pointer.targetX - pointer.x) * 0.055;
+          pointer.y += (pointer.targetY - pointer.y) * 0.055;
+          drawFrame(time);
+          if (heroArtFrame && !reducedMotion && !mobile) {
+            heroArtFrame.style.setProperty('--hero-shift-x', `${(pointer.x - 0.5) * 10}px`);
+            heroArtFrame.style.setProperty('--hero-shift-y', `${(pointer.y - 0.5) * 7}px`);
+          }
+        }
+        frameId = window.requestAnimationFrame(animate);
+      }
+
+      function startAnimation() {
+        if (!reducedMotion && inView && !document.hidden && !frameId) {
+          frameId = window.requestAnimationFrame(animate);
+        }
+      }
+      function stopAnimation() {
+        if (frameId) window.cancelAnimationFrame(frameId);
+        frameId = 0;
+      }
+
+      heroSection.addEventListener('pointermove', (event) => {
+        if (event.pointerType === 'touch') return;
+        const rect = heroSection.getBoundingClientRect();
+        pointer.targetX = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+        pointer.targetY = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+      }, { passive: true });
+      heroSection.addEventListener('pointerleave', () => {
+        pointer.targetX = 0.5;
+        pointer.targetY = 0.45;
+      }, { passive: true });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopAnimation();
+        else startAnimation();
+      });
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(([entry]) => {
+          inView = entry.isIntersecting;
+          if (inView) startAnimation();
+          else stopAnimation();
+        }, { threshold: 0.01 });
+        observer.observe(heroSection);
+      }
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+      resizeCanvas();
+      if (reducedMotion) drawFrame(0, true);
+      else startAnimation();
+    }
+  }
+
 })();
